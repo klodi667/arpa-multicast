@@ -1,0 +1,14 @@
+import multicast
+from multicast import network
+
+receiver = multicast.MulticastUDPReceiver ("eth0", "10.1.1.1", 1234 )
+data = receiver.read()
+receiver.close()
+
+config = network.ifconfig()
+print config['eth0'].addresses
+# ['10.0.0.1']
+print config['eth0'].multicast
+#True - eth0 supports multicast
+print config['eth0'].up
+#True - eth0 is up
